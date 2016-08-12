@@ -1,0 +1,30 @@
+@Autowired
+	ProductService productService;
+	Product product;
+	
+	@RequestMapping(value="/Add",method = RequestMethod.GET)
+	public ModelAndView showAddpjsp(Model model) {
+		
+		model.addAttribute("product",new Product());
+		
+		ModelAndView mv = new ModelAndView("Add");
+		System.out.println("sucess addproduct");
+		return mv;
+	}
+
+	
+
+	@RequestMapping(value="/productadd",method = RequestMethod.POST)
+	public ModelAndView Productcontroller1(@ModelAttribute("product")Product product,Model model,BindingResult result)
+
+			
+	{
+		
+
+		productService.saveOrUpdate(product);
+
+		ModelAndView mv = new ModelAndView("Add");
+		System.out.println("product controller called");
+		return mv;
+
+	}
