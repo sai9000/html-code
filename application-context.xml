@@ -36,10 +36,11 @@
 				<value>com.watchstreets.daoimpl.ProductDAOImpl</value>
 				<value>com.watchstreets.daoimpl.SupplierDAOImpl</value>
 				<value>com.watchstreets.daoimpl.UserDAOImpl</value>
-				
-			
-		
-			</list>
+				<value>com.watchstreets.service.UserService</value>
+				<value>com.watchstreets.service.ProductService</value>
+				<value>com.watchstreets.service.CategoryService</value>
+				<value>com.watchstreets.service.SupplierService</value>
+				</list>
 		</property>
 
 		<property name="packagesToScan">
@@ -49,6 +50,7 @@
 				<value>com.watchstreets.model</value>
 				<value>com.watchstreets.dao</value>
 				<value>com.watchstreets.daoimpl</value>
+				<value>com.watchstreets.service</value>
 			
 			</list>
 		</property>
