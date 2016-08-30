@@ -7,6 +7,10 @@ import com.watchstreets.model.Supplier;
 
 
 public interface SupplierDAO {
+	
+	public Supplier getByName(String name);
+	
+	
 	public List<Supplier> list();
 
 	public Supplier get(int id);

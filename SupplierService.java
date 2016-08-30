@@ -21,7 +21,12 @@ public List<Supplier> list() {
 
 	}
 
-	public Supplier get(int id) {
+
+public Supplier getByName(String name) {
+	return supplierDAO.getByName(name);
+}
+	
+public Supplier get(int id) {
 		return supplierDAO.get(id);
 	}
 

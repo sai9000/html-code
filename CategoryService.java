@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.watchstreets.dao.CategoryDAO;
 import com.watchstreets.model.Category;
-import com.watchstreets.model.User;
 @Service
 
 public class CategoryService {
@@ -19,13 +18,17 @@ CategoryDAO categoryDAO;
 		return list;
 	}
 
-	public Category get(int id) {
+	public Category getByName(String name) {
+		return categoryDAO.getByName(name);
+	}
+	
+	
+public Category get(int id) {
 		return categoryDAO.get(id);
 	}
 
 	public void saveOrUpdate(Category category) {
-	
-		categoryDAO.saveOrUpdate(category);	
+	categoryDAO.saveOrUpdate(category);
 	}
 
 	public void delete(int id) {

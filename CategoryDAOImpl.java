@@ -5,12 +5,14 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.watchstreets.dao.CategoryDAO;
 import com.watchstreets.model.Category;
+import com.watchstreets.model.Supplier;
 
 @Repository("categoryDAO")
 public class CategoryDAOImpl implements  CategoryDAO {
@@ -22,9 +24,13 @@ public CategoryDAOImpl(SessionFactory sessionFactory){
 this.sessionFactory=sessionFactory;
 }
 
-@Transactional
+
+@Transactional 
 public void saveOrUpdate(Category category){
-sessionFactory.getCurrentSession().saveOrUpdate(category);
+	Transaction t=sessionFactory.getCurrentSession().beginTransaction();
+	
+	sessionFactory.getCurrentSession().saveOrUpdate(category);
+t.commit();
 }
 
 @Transactional 
@@ -57,5 +63,20 @@ public List<Category> list() {
 }
 
 
+@Transactional
+public Category getByName(String name) {
 
+   String hql = "from Category where name=" + "'"+ name +"'";
+
+	Query query = (Query) sessionFactory.openSession().createQuery(hql);
+	List<Category> listCategory = (List<Category>)  query.list();
+	
+	if  (listCategory  != null && !listCategory.isEmpty()){
+		return listCategory.get(0);
+		
+	}
+		return null;
+
+
+}
 }

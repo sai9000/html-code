@@ -6,13 +6,14 @@ import com.watchstreets.model.Product;
 
 
 public interface ProductDAO {
-public List<Product> list();
-	
+	public void saveOrUpdate(Product product);
+		 
 	public Product get(int id);
 	
-	public void saveOrUpdate(Product product);
-	public void delete(int id);
-	
+	public Product getProductByName(String name) ;
 
+	public void delete(int id) ;
+	
+	public List<Product> list();
 
 }
